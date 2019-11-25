@@ -1,6 +1,8 @@
 _confi.yml
 
-venv
+venv/
 
 .vscode/settings.json
 AlienInvasion.code-workspace
+
+*.pyc
