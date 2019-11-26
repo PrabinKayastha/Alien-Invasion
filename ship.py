@@ -20,4 +20,4 @@ class Ship:
     def blitme(self):
         """Draw one ship image over the other"""
         # draw ship at current location
-        self.screen.blit(self.image, self.rect,)
+        self.screen.blit(self.image, self.rect)
