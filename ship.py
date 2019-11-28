@@ -1,4 +1,5 @@
 import pygame
+# import settings
 
 
 class Ship:
@@ -7,6 +8,7 @@ class Ship:
     def __init__(self, ai_game):
         """Initialize the ship and its starting position"""
         self.screen = ai_game.screen
+        self.settings = ai_game.settings
         self.screen_rect = ai_game.screen.get_rect()
 
         # load ship image and get its rect
@@ -38,10 +40,15 @@ class Ship:
     def update(self):
         """Update ship's movement using the Movement Flags"""
         if self.moving_right:
-            self.rect.x += 1
+            self.x += self.settings.ship_horizontal_speed
         elif self.moving_left:
-            self.rect.x -= 1
+            self.x -= self.settings.ship_horizontal_speed
         elif self.moving_up:
-            self.rect.y -= 1
+            self.y -= self.settings.ship_vertical_speed
         elif self.moving_down:
-            self.rect.y += 1
+            self.y += self.settings.ship_vertical_speed
+
+        # Update rect object from self x, y
+        self.rect.x = self.x
+        self.rect.y = self.y
+        
