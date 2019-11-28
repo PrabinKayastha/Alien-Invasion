@@ -58,6 +58,9 @@ class AlienInvasion:
         elif event.key == pygame.K_DOWN:
             # Move Down
             self.ship.moving_down = True
+        elif event.key == pygame.K_q:
+            # Quit the game
+            sys.exit()
 
 
     def _check_key_up_event(self, event):
