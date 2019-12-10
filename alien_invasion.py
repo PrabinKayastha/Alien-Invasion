@@ -2,6 +2,7 @@ import sys
 
 import pygame
 from pygame.locals import *
+from alien import Alien
 
 
 from settings import Settings
