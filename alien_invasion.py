@@ -21,7 +21,8 @@ class AlienInvasion:
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption('Alien Invasion')
         self.ship = Ship(self)
-        self.bullets = pygame.sprite.Group()
+        self.bullets = pygame.sprite.Group()    # Adds bullets
+        self.aliens = pygame.sprite.Group()     # Adds aliens
 
         # set background color
         self.bg_color = self.settings.bg_color
@@ -111,8 +112,17 @@ class AlienInvasion:
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
 
+        self.aliens.draw(self.screen)
+
         # Make the most recently drawn screen visible
         pygame.display.flip()
+
+
+    def _create_fleet(self):
+        """Creates fleet of Aliens."""
+        # Make an alien.
+        alien = Alien(self)
+        self.aliens.add(alien)
 
 
 
