@@ -36,6 +36,7 @@ class AlienInvasion:
             self.ship.update()
             self.bullets.update()
             self._update_bullets()
+            self._update_aliens()
             self._update_screen()
 
 
@@ -140,6 +141,7 @@ class AlienInvasion:
             for alien_number in range(number_aliens_x):
                 self._create_alien(alien_number, row_number)
 
+
     def _create_alien(self, alien_number, row_number):
          # create an alien and place it in a row.
             alien = Alien(self)
@@ -150,6 +152,10 @@ class AlienInvasion:
             alien.rect.y = alien.rect.height + 2 * alien.rect.height * row_number
             self.aliens.add(alien)
 
+
+    def _update_aliens(self):
+        """Update the position of all the fleets of the aliens."""
+        self.aliens.update()
 
 
 
