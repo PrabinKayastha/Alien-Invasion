@@ -13,6 +13,7 @@ class Scoreboard:
         self.screen_rect = self.screen.get_rect()
         self.settings = ai_game.settings
         self.stats = ai_game.stats
+        self.prev_highscore = self._get_previous_high_score()
 
         # Font settings for scoring information.
         self.text_color = (30, 30, 30)
@@ -48,8 +49,9 @@ class Scoreboard:
 
     def prep_high_score(self):
         """Turn the high score into rendered image."""
-        high_score = round(self.stats.high_score, -1)
-        high_score_str = "High Score : {:,}".format(high_score)
+        # 
+        self.high_score = round(self.stats.high_score, -1)
+        high_score_str = "High Score : {:,}".format(self.high_score)
         self.high_score_image = self.font.render(high_score_str, True, self.text_color, self.settings.bg_color)
 
         # Center the highscore at the top of the screen.
@@ -84,3 +86,21 @@ class Scoreboard:
             ship.rect.x = 10 + ship_number * ship.rect.width
             ship.rect.y = 10
             self.ships.add(ship)
+
+
+    def _get_previous_high_score(self):
+        previous_high_score = 0 
+        with open("highscore.txt", 'r') as fr:
+            previous_high_score = int(fr.read())
+        return previous_high_score 
+
+
+    def _write_current_highscore(self):
+        with open("highscore.txt", 'w') as fw:
+            fw.write(self.sb.high_score)
+
+
+    def update_highscore_file_record(self):
+        if self.high_score > self.prev_highscore:
+            self._write_current_highscore()
+            print('success')

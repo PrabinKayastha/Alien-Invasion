@@ -57,6 +57,7 @@ class AlienInvasion:
         """Respond to keyboard and mouse events."""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                self.sb.update_highscore_file_record()
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
                 self._check_key_down_event(event)
@@ -108,6 +109,7 @@ class AlienInvasion:
             self.ship.moving_down = True
         elif event.key == pygame.K_q:
             # Quit the game
+            self.sb.update_highscore_file_record()
             sys.exit()
         elif event.key == pygame.K_SPACE:
             # Fire Bullet
@@ -284,9 +286,9 @@ class AlienInvasion:
                 # Treat this the same as the ship got hit.
                 self._ship_hit()
                 break
-
-
-
+            
+            
+        
 if __name__ == '__main__':
     # Make a game instance, and run the game
     ai = AlienInvasion()

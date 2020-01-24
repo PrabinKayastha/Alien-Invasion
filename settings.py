@@ -10,7 +10,7 @@ class Settings:
         self.bg_color = (230, 230, 230)
 
         """Ship Settings"""
-        self.ship_horizontal_speed = 1.5
+        self.ship_horizontal_speed = 2.0
         self.ship_vertical_speed = 1.5
         self.ship_limit = 3
 
@@ -23,7 +23,7 @@ class Settings:
 
         """Alien Settings"""
         self.alien_speed = 1.0
-        self.fleet_drop_speed = 30
+        self.fleet_drop_speed = 300
         # fleet_direction of 1 represents right; -1 represents left.bit_length.
         self.fleet_direction = 1
 
