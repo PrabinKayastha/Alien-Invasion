@@ -91,13 +91,16 @@ class Scoreboard:
     def _get_previous_high_score(self):
         previous_high_score = 0 
         with open("highscore.txt", 'r') as fr:
-            previous_high_score = int(fr.read())
+            try:
+                previous_high_score = int(fr.read())
+            except ValueError as e:
+                previous_high_score = 0
         return previous_high_score 
 
 
     def _write_current_highscore(self):
         with open("highscore.txt", 'w') as fw:
-            fw.write(self.sb.high_score)
+            fw.write(str(self.high_score))
 
 
     def update_highscore_file_record(self):
